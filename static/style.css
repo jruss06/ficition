@@ -2,17 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-neutral-900 text-neutral-100;
+  }
+  a {
+    @apply text-cyan-400;
+  }
+}
+
 .header {
   font-size: 4em;
 }
 
 .story-header {
-  font-size: 2em;
-  color: blue;
+  font-size: 1.2em;
+  font-weight: 600;
 }
 
 .story-item {
-  border-top: 1px solid;
+  @apply border-dotted border-b-2 border-orange-500;
   padding: 1em 0.5em;
   margin: 0.5em 0;
 }
