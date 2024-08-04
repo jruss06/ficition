@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block header %}Add Story{% endblock %}
+
+{% block content %}
+<form action="{% url 'poststory' %}" method="post">
+{% csrf_token %}
+<label>Story Title: </label>
+<div><input type="text" name="title" /></div>
+
+<label>Chapter Title: </label>
+<div><input type="text" name="chaptertitle" /></div>
+
+<label>Chapter Text: </label>
+<div>
+	<textarea cols="50" name="body"></textarea>
+</div>
+
+<button type="submit">Submit</button>
+</form>
+
+{% endblock %}

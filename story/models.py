@@ -7,8 +7,8 @@ class Story(models.Model):
         verbose_name_plural = 'Stories'
     title = models.CharField(max_length=200)
     summary = models.CharField(max_length=1000)
-    added_date = models.DateTimeField("date added")
-    update_date = models.DateTimeField("date updated")
+    added_date = models.DateTimeField("date added", auto_now_add=True)
+    update_date = models.DateTimeField("date updated", auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
@@ -19,8 +19,8 @@ class Chapter(models.Model):
     story = models.ForeignKey(Story, on_delete=models.CASCADE)
     body = models.TextField()
     order = models.IntegerField()
-    added_date = models.DateTimeField("date added")
-    update_date = models.DateTimeField("date updated")
+    added_date = models.DateTimeField("date added", auto_now_add=True)
+    update_date = models.DateTimeField("date updated", auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
