@@ -8,6 +8,12 @@
 </head>
 
 <body>
+    <div class="nav px-8 py-2 bg-cyan-950 text-white">
+	<ul>
+		<li class="px-4 inline"><a href="{% url 'index' %}">Home</a></li>
+		<li class="px-4 inline"><a href="{% url 'login' %}">Login</a></li>
+	</ul>
+    </div>
     <div class="container mx-auto">
     	<h1 class="header">{% block header %}{% endblock %}</h1>
     </div>
