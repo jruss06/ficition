@@ -642,10 +642,9 @@ select {
 }
 
 body {
-  --tw-bg-opacity: 1;
-  background-color: rgb(23 23 23 / var(--tw-bg-opacity));
   --tw-text-opacity: 1;
-  color: rgb(245 245 245 / var(--tw-text-opacity));
+  color: rgb(254 215 170 / var(--tw-text-opacity));
+  background-color: rgb(53, 53, 53);
 }
 
 a {

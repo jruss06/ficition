@@ -4,7 +4,8 @@
 
 @layer base {
   body {
-    @apply bg-neutral-900 text-neutral-100;
+    @apply text-orange-200;
+    background-color: rgb(53, 53, 53);
   }
   a {
     @apply text-cyan-400;
