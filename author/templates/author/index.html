@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
-{% block header %}Stories{% endblock %}
+{% block header %}Profile{% endblock %}
 
-{% block content %}
-{% if story_list %}
-    <div class="stories">
+{% block content %} 
+  <div class="mb-4">Username: {{ user.username }}</div>
+
+  {% if user.is_authenticated %}	
+    <a href="{% url 'addstory' %}">Add Story</a>
+  {% endif %}
+
     {% for story in story_list %}
         <div class="story-item">
 		<a class="story-header" href="{% url 'show' story.id %}">{{ story.title }}</a> by {{ story.user.username }}
@@ -14,9 +18,4 @@
 		<div class="story-date">Updated: {{ story.update_date }}</div>
 	</div>
     {% endfor %}
-    </div>
-{% else %}
-    <p>No stories are available.</p>
-{% endif %}
-
 {% endblock %}

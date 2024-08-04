@@ -21,6 +21,7 @@ from story import views
 urlpatterns = [
     path("", views.index, name='index'),
     path("story/", include("story.urls")),
+    path("author/", include("author.urls")),
     path('admin/', admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
 ]
