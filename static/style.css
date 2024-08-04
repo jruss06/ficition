@@ -1,0 +1,20 @@
+.header {
+  font-size: 4em;
+}
+
+.story-header {
+  font-size: 2em;
+  color: blue;
+}
+
+.story-item {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  padding: 1em 0.5em;
+}
+
+.story-body {
+  border-top: 1px solid;
+  margin: 0.5em 2em;
+  padding: 1em 0;
+}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block header %}
+{{ story.title }}
+{% endblock %}
+
+{% block content %}
+ <div class="story-body">
+  {{ chapter.body|safe }}
+ </div>
+{% endblock %}

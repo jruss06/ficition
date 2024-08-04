@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block header %}Stories{% endblock %}
+
+{% block content %}
+{% if story_list %}
+    <div class="stories">
+    {% for story in story_list %}
+        <div class="story-item">
+		<a class="story-header" href="/story/{{ story.id }}/">{{ story.title }}</a>
+		<div class="story-summary">
+			Summary: {{ story.summary }}
+		</div>
+		<div class="story-date">Updated: {{ story.update_date }}</div>
+	</div>
+    {% endfor %}
+    </div>
+{% else %}
+    <p>No stories are available.</p>
+{% endif %}
+
+{% endblock %}
