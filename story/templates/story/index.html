@@ -7,7 +7,7 @@
     <div class="stories">
     {% for story in story_list %}
         <div class="story-item">
-		<a class="story-header" href="/story/{{ story.id }}/">{{ story.title }}</a>
+		<a class="story-header" href="/story/{{ story.id }}/">{{ story.title }}</a> by {{ story.user.username }}
 		<div class="story-summary">
 			Summary: {{ story.summary }}
 		</div>

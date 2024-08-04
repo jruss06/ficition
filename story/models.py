@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Story(models.Model):
     class Meta:
@@ -8,6 +9,7 @@ class Story(models.Model):
     summary = models.CharField(max_length=1000)
     added_date = models.DateTimeField("date added")
     update_date = models.DateTimeField("date updated")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
 
@@ -19,5 +21,6 @@ class Chapter(models.Model):
     order = models.IntegerField()
     added_date = models.DateTimeField("date added")
     update_date = models.DateTimeField("date updated")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     def __str__(self):
         return self.title
