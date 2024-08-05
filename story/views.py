@@ -21,9 +21,15 @@ def addstory(request):
     return render(request, "story/addstory.html")
 
 def poststory(request):
-    Story.objects.create(
+    story = Story.objects.create(
             title=request.POST["title"],
             summary=request.POST["summary"],
+            user=request.user)
+    Chapter.objects.create(
+            title=request.POST["chaptertitle"],
+            body=request.POST["body"],
+            story=story,
+            order=request.POST["order"],
             user=request.user)
     return HttpResponseRedirect(reverse("index"))
 
@@ -50,6 +56,9 @@ def editstory(request, story_id):
     }
     return render(request, "story/edit.html", context)
 
+def postedit(request, story_id):
+    return HttpResponseRedirect(reverse("index"))
+
 def editchapter(request, story_id, chapter_id):
     story = Story.objects.get(pk=story_id)
     chapter = Chapter.objects.get(pk=chapter_id)
@@ -58,3 +67,6 @@ def editchapter(request, story_id, chapter_id):
         "chapter": chapter,
     }
     return render(request, "story/editchapter.html", context)
+
+def posteditChapter (request, story_id, chapter_id):
+    return HttpResponseRedirect(reverse("index"))
