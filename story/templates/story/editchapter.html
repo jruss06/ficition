@@ -3,7 +3,7 @@
 {% block header %}Edit Chapter{% endblock %}
 
 {% block content %}
-<form action="{% url 'poststory' %}" method="post">
+<form action="{% url 'posteditchapter' story.id chapter.id %}" method="post">
 {% csrf_token %}
 <label>Chapter Title: </label>
 <div><input type="text" name="chaptertitle" value="{{ chapter.title }}"/></div>
