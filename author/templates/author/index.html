@@ -4,10 +4,7 @@
 
 {% block content %} 
   <div class="mb-4">Username: {{ user.username }}</div>
-
-  {% if user.is_authenticated %}	
-    <a href="{% url 'addstory' %}">Add Story</a>
-  {% endif %}
+  <a href="{% url 'addstory' %}">Add Story</a>
 
     {% for story in story_list %}
         <div class="story-item">
@@ -15,7 +12,9 @@
 		<div class="story-summary">
 			Summary: {{ story.summary }}
 		</div>
-		<div class="story-date">Updated: {{ story.update_date }}</div>
+		<div class="mb-4 story-date">Updated: {{ story.update_date }}</div>
+		<div class="font-bold"><a href="{% url 'editstory' story.id %}">Edit Story</a></div>
+		<div class="font-bold"><a href="#">Add Chapter</a></div>
 	</div>
     {% endfor %}
 {% endblock %}

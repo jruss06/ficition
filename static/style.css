@@ -10,6 +10,12 @@
   a {
     @apply text-cyan-400;
   }
+  input[type="text"] {
+    background-color: black;
+  }
+  textarea {
+    background-color: black;
+  }
 }
 
 .header {

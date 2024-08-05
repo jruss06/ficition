@@ -10,9 +10,11 @@
 		<a class="story-header" href="{% url 'show' story.id %}">{{ story.title }}</a> 
 		by <a href="{% url 'viewauthor' user.id %}">{{ story.user.username }}</a>
 		<div class="story-summary">
-			Summary: {{ story.summary }}
+			<span class="text-white font-bold">Summary:</span> {{ story.summary }}
 		</div>
-		<div class="story-date">Updated: {{ story.update_date }}</div>
+		<div class="story-date">
+			<span class="text-white font-bold">Updated:</span> {{ story.update_date }}
+		</div>
 	</div>
     {% endfor %}
     </div>

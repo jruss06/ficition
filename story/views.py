@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
@@ -23,7 +21,18 @@ def addstory(request):
     return render(request, "story/addstory.html")
 
 def poststory(request):
-    newStory = Story.objects.create(
+    Story.objects.create(
             title=request.POST["title"],
+            summary=request.POST["summary"],
             user=request.user)
     return HttpResponseRedirect(reverse("index"))
+
+def editstory(request, story_id):
+    story = Story.objects.get(pk=story_id)
+    chapters = Chapter.objects.filter(story_id=story_id)
+    context = {
+        "story": story,
+        "chapters": chapters,
+    }
+    return render(request, "story/edit.html", context)
+
