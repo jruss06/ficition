@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block header %}Edit Chapter{% endblock %}
+
+{% block content %}
+<form action="{% url 'poststory' %}" method="post">
+{% csrf_token %}
+<label>Chapter Title: </label>
+<div><input type="text" name="chaptertitle" value="{{ chapter.title }}"/></div>
+
+<label>Chapter Text: </label>
+<div>
+	<textarea cols="50" name="body">{{ chapter.body }}</textarea>
+</div>
+
+<button type="submit">Submit</button>
+</form>
+
+{% endblock %}

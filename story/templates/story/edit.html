@@ -15,7 +15,7 @@
 Chapters:
 {% for chapter in chapters %}
     <div>{{ chapter.order }} - {{ chapter.title }} 
-        <a href="#">Edit</a>
+        <a href="{% url 'editchapter' story.id chapter.id %}">Edit</a>
     </div>
 {% endfor %}
 </div>

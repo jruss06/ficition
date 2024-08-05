@@ -14,7 +14,7 @@
 		</div>
 		<div class="mb-4 story-date">Updated: {{ story.update_date }}</div>
 		<div class="font-bold"><a href="{% url 'editstory' story.id %}">Edit Story</a></div>
-		<div class="font-bold"><a href="#">Add Chapter</a></div>
+		<div class="font-bold"><a href="{% url 'addchapter' story.id %}">Add Chapter</a></div>
 	</div>
     {% endfor %}
 {% endblock %}
