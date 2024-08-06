@@ -1,25 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  body {
-    @apply text-orange-200;
-    background-color: rgb(53, 53, 53);
-  }
-  a {
-    @apply text-cyan-400;
-  }
-  input[type="text"] {
-    background-color: black;
-  }
-  textarea {
-    background-color: black;
-  }
-  select {
-    color: black;
-  }
-}
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 
 .header {
   font-size: 4em;
@@ -31,7 +10,6 @@
 }
 
 .story-item {
-  @apply border-dotted border-b-2 border-orange-500;
   padding: 1em 0.5em;
   margin: 0.5em 0;
 }
@@ -40,5 +18,4 @@
   border-top: 1px solid;
   margin: 0.5em 2em;
   padding: 1em 0;
-  color: white;
 }

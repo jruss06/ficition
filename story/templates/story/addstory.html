@@ -5,21 +5,29 @@
 {% block content %}
 <form action="{% url 'poststory' %}" method="post">
 {% csrf_token %}
-<label>Story Title: </label>
-<div><input type="text" name="title" /></div>
-
-<label>Story Summary: </label>
-<div><textarea name="summary" cols="50"></textarea></div>
-
-<label>Chapter Title: </label>
-<div><input type="text" name="chaptertitle" /></div>
-
-<label>Chapter Text: </label>
-<div>
-	<textarea cols="50" name="body"></textarea>
+<div class="field">
+<label class="label">Story Title: </label>
+<div><input class="input" type="text" name="title" /></div>
 </div>
 
-<button type="submit">Submit</button>
+<div class="field">
+<label class="label">Story Summary: </label>
+<div><textarea class="input" name="summary" cols="50"></textarea></div>
+</div>
+
+<div class="field">
+<label class="label">Chapter Title: </label>
+<div><input class="input" type="text" name="chaptertitle" /></div>
+</div>
+
+<div class="field">
+<label class="label">Chapter Text: </label>
+<div>
+	<textarea class="textarea" cols="50" name="body"></textarea>
+</div>
+</div>
+
+<button class="button is-link is-light" type="submit">Submit</button>
 </form>
 
 {% endblock %}
