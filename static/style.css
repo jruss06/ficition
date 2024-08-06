@@ -16,6 +16,9 @@
   textarea {
     background-color: black;
   }
+  select {
+    color: black;
+  }
 }
 
 .header {

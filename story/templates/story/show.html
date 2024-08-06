@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+<select name="chapter" id="chapter">
+{% for chapter in chapter_list %}
+    <option value="{{ chapter.id }}">{{ chapter.title }}</option>
+{% endfor %}
+</select>
  <div class="story-body">
   {{ chapter.body|safe }}
  </div>
