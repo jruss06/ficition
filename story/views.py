@@ -29,9 +29,9 @@ def poststory(request):
             title=request.POST["chaptertitle"],
             body=request.POST["body"],
             story=story,
-            order=request.POST["order"],
+            order=1,
             user=request.user)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("profile"))
 
 def addchapter(request, story_id):
     story = get_object_or_404(Story, pk=story_id)
@@ -45,7 +45,7 @@ def postchapter(request, story_id):
             story=story,
             order=request.POST["order"],
             user=request.user)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("profile"))
 
 def editstory(request, story_id):
     story = Story.objects.get(pk=story_id)
@@ -57,7 +57,11 @@ def editstory(request, story_id):
     return render(request, "story/edit.html", context)
 
 def postedit(request, story_id):
-    return HttpResponseRedirect(reverse("index"))
+    story = Story.objects.get(pk=story_id)
+    story.title=request.POST["title"]
+    story.summary=request.POST["summary"]
+    story.save()
+    return HttpResponseRedirect(reverse("profile"))
 
 def editchapter(request, story_id, chapter_id):
     story = Story.objects.get(pk=story_id)
@@ -69,4 +73,11 @@ def editchapter(request, story_id, chapter_id):
     return render(request, "story/editchapter.html", context)
 
 def posteditChapter (request, story_id, chapter_id):
-    return HttpResponseRedirect(reverse("index"))
+    story = Story.objects.get(pk=story_id)
+    chapter = Chapter.objects.get(pk=chapter_id)
+    chapter.title=request.POST["chaptertitle"]
+    chapter.body=request.POST["body"]
+    chapter.order=request.POST["order"]
+    chapter.save()
+    story.save()
+    return HttpResponseRedirect(reverse("profile"))
