@@ -1,22 +1,33 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block header %}Add Chapter{% endblock %}
+{% block header %}
+  Add Chapter
+{% endblock %}
 
 {% block content %}
-<form action="{% url 'postchapter' story.id %}" method="post">
-{% csrf_token %}
-<label>Chapter Title: </label>
-<div><input type="text" name="chaptertitle" /></div>
+  <form action="{% url 'postchapter' story.id %}" method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label class="label">Chapter Title:</label>
+      <div>
+        <input class="input" type="text" name="chaptertitle" />
+      </div>
+    </div>
 
-<label>Chapter Text: </label>
-<div>
-	<textarea cols="50" name="body"></textarea>
-</div>
+    <div class="field">
+      <label class="label">Chapter Text:</label>
+      <div>
+        <textarea class="textarea" cols="50" name="body"></textarea>
+      </div>
+    </div>
 
-<label>Chapter Order: </label>
-<div><input class="bg-black" type="number" name="order" /></div>
+    <div class="field">
+      <label class="label">Chapter Order:</label>
+      <div>
+        <input class="input" type="number" name="order" />
+      </div>
+    </div>
 
-<button type="submit">Submit</button>
-</form>
-
+    <button class="button is-link is-light" type="submit">Submit</button>
+  </form>
 {% endblock %}

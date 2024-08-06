@@ -1,26 +1,35 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block header %}Edit{% endblock %}
+{% block header %}
+  Edit
+{% endblock %}
 
 {% block content %}
-<form action="{% url 'postedit' story.id %}" method="post">
-{% csrf_token %}
-<label>Story Title: </label>
-<div><input type="text" name="title" value="{{ story.title }}"/></div>
-
-<label>Story Summary: </label>
-<div><textarea name="summary">{{ story.summary }}</textarea></div>
-
-<div class="my-4">
-Chapters:
-{% for chapter in chapters %}
-    <div>{{ chapter.order }} - {{ chapter.title }} 
-        <a href="{% url 'editchapter' story.id chapter.id %}">Edit</a>
+  <form action="{% url 'postedit' story.id %}" method="post">
+    {% csrf_token %}
+    <div class="field">
+      <label class="label">Story Title:</label>
+      <div>
+        <input class="input" type="text" name="title" value="{{ story.title }}" />
+      </div>
     </div>
-{% endfor %}
-</div>
+    <div class="field">
+      <label class="label">Story Summary:</label>
+      <div>
+        <textarea class="textarea" name="summary">{{ story.summary }}</textarea>
+      </div>
+    </div>
 
-<button type="submit">Submit</button>
-</form>
+    <div class="my-4">
+      <label class="label">Chapters:</label>
+      {% for chapter in chapters %}
+        <div>
+          {{ chapter.order }} - {{ chapter.title }}
+          <a href="{% url 'editchapter' story.id chapter.id %}">Edit</a>
+        </div>
+      {% endfor %}
+    </div>
 
+    <button class="button is-link is-light" type="submit">Submit</button>
+  </form>
 {% endblock %}
