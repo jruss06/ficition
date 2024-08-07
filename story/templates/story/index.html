@@ -16,6 +16,11 @@
 			<div><span class="text-white font-bold">Added:</span> {{ story.added_date }}</div>
 			<span class="text-white font-bold">Updated:</span> {{ story.update_date }}
 		</div>
+		<div>
+			{% for tag in story.tags.all %}
+				<a href="#">#{{ tag.name }}</a>
+			{% endfor %}
+		</div>
 	</div>
     {% endfor %}
     </div>
