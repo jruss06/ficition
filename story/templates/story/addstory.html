@@ -4,30 +4,41 @@
 
 {% block content %}
 <form action="{% url 'poststory' %}" method="post">
-{% csrf_token %}
-<div class="field">
-<label class="label">Story Title: </label>
-<div><input class="input" type="text" name="title" /></div>
-</div>
+	{% csrf_token %}
+	<div class="field">
+		<label class="label">Story Title: </label>
+		<div><input class="input" type="text" name="title" /></div>
+	</div>
 
-<div class="field">
-<label class="label">Story Summary: </label>
-<div><textarea class="input" name="summary" cols="50"></textarea></div>
-</div>
+	<div class="field">
+		<label class="label">Story Summary: </label>
+		<div><textarea class="input" name="summary" cols="50"></textarea></div>
+	</div>
 
-<div class="field">
-<label class="label">Chapter Title: </label>
-<div><input class="input" type="text" name="chaptertitle" /></div>
-</div>
+	<div class="field">
+		<label class="label">Chapter Title: </label>
+		<div><input class="input" type="text" name="chaptertitle" /></div>
+	</div>
 
-<div class="field">
-<label class="label">Chapter Text: </label>
-<div>
-	<textarea class="textarea" cols="50" name="body"></textarea>
-</div>
-</div>
+	<div class="field">
+		<label class="label">Chapter Text: </label>
+		<div>
+			<textarea class="textarea" cols="50" name="body"></textarea>
+		</div>
+	</div>
 
-<button class="button is-link is-light" type="submit">Submit</button>
+	<div class="field">
+		<label class="label" for="tags">Tags:</label>
+		<div class="select is-multiple">
+			<select name="tags" id="tags" multiple>
+				{% for tag in tags %}
+				<option value="{{tag.id}}">{{tag.name}}</option>
+				{% endfor %}
+			</select>
+		</div>
+	</div>
+
+	<button class="button is-link is-light" type="submit">Submit</button>
 </form>
 
 {% endblock %}

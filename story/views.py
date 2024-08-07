@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 
 from .models import Story, Chapter
-
+from tags.models import Tag
 
 def index(request):
     story_list = Story.objects.order_by("-update_date")[:5]
@@ -19,7 +19,11 @@ def show(request, story_id, chapter_num=1):
     return render(request, "story/show.html", {"story": story, "chapter": chapter, "chapter_list": chapter_list})
 
 def addstory(request):
-    return render(request, "story/addstory.html")
+    tags = Tag.objects.all()
+    context = {
+        "tags": tags
+    }
+    return render(request, "story/addstory.html", context)
 
 def poststory(request):
     story = Story.objects.create(
