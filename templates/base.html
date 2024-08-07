@@ -22,7 +22,10 @@
             <a href="{% url 'profile' %}">Profile</a>
           </li>
           <li class="px-4 is-inline">
-            <a href="#">Logout</a>
+            <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+              {% csrf_token %}
+              <button type="submit">Logout</button>
+            </form>
           </li>
         {% else %}
           <li class="px-4 is-inline">

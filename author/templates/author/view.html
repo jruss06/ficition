@@ -8,7 +8,7 @@
     {% for story in story_list %}
     <div class="story-item">
         <a class="story-header" href="{% url 'show' story.id %}">{{ story.title }}</a>
-        by <a href="{% url 'viewauthor' user.id %}">{{ story.user.username }}</a>
+        by <a href="{% url 'viewauthor' story.user.id %}">{{ story.user.username }}</a>
         <div class="story-summary">
             <span class="text-white font-bold">Summary:</span> {{ story.summary }}
         </div>
