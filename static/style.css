@@ -1,5 +1,9 @@
 @import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
 
+h3 {
+  font-size: 2em;
+}
+
 .header {
   font-size: 4em;
 }
@@ -23,6 +27,7 @@
 #logout-form {
   display: inline;
 }
+
 #logout-form button {
   background: none;
   border: none;
