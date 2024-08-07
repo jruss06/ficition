@@ -7,14 +7,23 @@
   <a href="{% url 'addstory' %}">Add Story</a>
 
     {% for story in story_list %}
-        <div class="story-item">
-		<a class="story-header" href="{% url 'show' story.id %}">{{ story.title }}</a> by {{ story.user.username }}
-		<div class="story-summary">
-			Summary: {{ story.summary }}
-		</div>
-		<div class="mb-4 story-date">Updated: {{ story.update_date }}</div>
-		<div class="font-bold"><a href="{% url 'editstory' story.id %}">Edit Story</a></div>
-		<div class="font-bold"><a href="{% url 'addchapter' story.id %}">Add Chapter</a></div>
-	</div>
+  <div class="story-item">
+	  <a class="story-header" href="{% url 'show' story.id %}">{{ story.title }}</a>
+	  by <a href="{% url 'viewauthor' user.id %}">{{ story.user.username }}</a>
+	  <div class="story-summary">
+		  <span class="text-white font-bold">Summary:</span> {{ story.summary }}
+	  </div>
+	  <div class="story-date">
+		  <div><span class="text-white font-bold">Added:</span> {{ story.added_date }}</div>
+		  <span class="text-white font-bold">Updated:</span> {{ story.update_date }}
+	  </div>
+	  <div class="mb-4">
+		  {% for tag in story.tags.all %}
+		  <a href="#">#{{ tag.name }}</a>
+		  {% endfor %}
+	  </div>
+	  <div class="font-bold"><a href="{% url 'editstory' story.id %}">Edit Story</a></div>
+	  <div class="font-bold"><a href="{% url 'addchapter' story.id %}">Add Chapter</a></div>
+  </div>
     {% endfor %}
 {% endblock %}
