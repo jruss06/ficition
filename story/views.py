@@ -59,10 +59,12 @@ def editstory(request, story_id):
     story = Story.objects.get(pk=story_id)
     chapters = Chapter.objects.filter(story_id=story_id)
     tags = Tag.objects.all()
+    selected_tags = story.tags.all()
     context = {
         "story": story,
         "chapters": chapters,
         "tags": tags,
+        "selected_tags": selected_tags,
     }
     return render(request, "story/edit.html", context)
 

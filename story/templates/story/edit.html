@@ -25,7 +25,11 @@
         <div class="select is-multiple">
             <select name="tags" id="tags" multiple>
                 {% for tag in tags %}
-                <option value="{{tag.id}}">{{tag.name}}</option>
+                    {% if tag in  selected_tags %}
+                    <option selected value="{{tag.id}}">{{tag.name}}</option>
+                    {% else %}
+                    <option value="{{tag.id}}">{{tag.name}}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>
