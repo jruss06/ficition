@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tags.apps.TagsConfig',
     'author.apps.AuthorConfig',
     'story.apps.StoryConfig',
     'django.contrib.admin',
