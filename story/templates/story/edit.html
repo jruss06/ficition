@@ -5,31 +5,42 @@
 {% endblock %}
 
 {% block content %}
-  <form action="{% url 'postedit' story.id %}" method="post">
+<form action="{% url 'postedit' story.id %}" method="post">
     {% csrf_token %}
     <div class="field">
-      <label class="label">Story Title:</label>
-      <div>
-        <input class="input" type="text" name="title" value="{{ story.title }}" />
-      </div>
+        <label class="label">Story Title:</label>
+        <div>
+            <input class="input" type="text" name="title" value="{{ story.title }}" />
+        </div>
     </div>
     <div class="field">
-      <label class="label">Story Summary:</label>
-      <div>
-        <textarea class="textarea" name="summary">{{ story.summary }}</textarea>
-      </div>
+        <label class="label">Story Summary:</label>
+        <div>
+            <textarea class="textarea" name="summary">{{ story.summary }}</textarea>
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label" for="tags">Tags:</label>
+        <div class="select is-multiple">
+            <select name="tags" id="tags" multiple>
+                {% for tag in tags %}
+                <option value="{{tag.id}}">{{tag.name}}</option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
 
     <div class="my-4">
-      <label class="label">Chapters:</label>
-      {% for chapter in chapters %}
+        <label class="label">Chapters:</label>
+        {% for chapter in chapters %}
         <div>
-          {{ chapter.order }} - {{ chapter.title }}
-          <a href="{% url 'editchapter' story.id chapter.id %}">Edit</a>
+            {{ chapter.order }} - {{ chapter.title }}
+            <a href="{% url 'editchapter' story.id chapter.id %}">Edit</a>
         </div>
-      {% endfor %}
+        {% endfor %}
     </div>
 
     <button class="button is-link is-light" type="submit">Submit</button>
-  </form>
+</form>
 {% endblock %}

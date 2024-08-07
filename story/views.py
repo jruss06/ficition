@@ -30,6 +30,9 @@ def poststory(request):
             title=request.POST["title"],
             summary=request.POST["summary"],
             user=request.user)
+    tagIds = request.POST.getlist("tags")
+    tags = Tag.objects.filter(id__in=tagIds)
+    story.tags.set(tags)
     Chapter.objects.create(
             title=request.POST["chaptertitle"],
             body=request.POST["body"],
@@ -55,9 +58,11 @@ def postchapter(request, story_id):
 def editstory(request, story_id):
     story = Story.objects.get(pk=story_id)
     chapters = Chapter.objects.filter(story_id=story_id)
+    tags = Tag.objects.all()
     context = {
         "story": story,
         "chapters": chapters,
+        "tags": tags,
     }
     return render(request, "story/edit.html", context)
 
@@ -65,6 +70,9 @@ def postedit(request, story_id):
     story = Story.objects.get(pk=story_id)
     story.title=request.POST["title"]
     story.summary=request.POST["summary"]
+    tagIds = request.POST.getlist("tags")
+    tags = Tag.objects.filter(id__in=tagIds)
+    story.tags.set(tags)
     story.save()
     return HttpResponseRedirect(reverse("profile"))
 
